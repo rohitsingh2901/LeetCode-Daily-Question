@@ -1,0 +1,63 @@
+2870. Minimum Number of Operations to Make Array Empty
+
+You are given a 0-indexed array nums consisting of positive integers.
+
+There are two types of operations that you can apply on the array any number of times:
+
+Choose two elements with equal values and delete them from the array.
+Choose three elements with equal values and delete them from the array.
+Return the minimum number of operations required to make the array empty, or -1 if it is not possible.
+
+ 
+
+Example 1:
+
+Input: nums = [2,3,3,2,2,4,2,3,4]
+Output: 4
+Explanation: We can apply the following operations to make the array empty:
+- Apply the first operation on the elements at indices 0 and 3. The resulting array is nums = [3,3,2,4,2,3,4].
+- Apply the first operation on the elements at indices 2 and 4. The resulting array is nums = [3,3,4,3,4].
+- Apply the second operation on the elements at indices 0, 1, and 3. The resulting array is nums = [4,4].
+- Apply the first operation on the elements at indices 0 and 1. The resulting array is nums = [].
+It can be shown that we cannot make the array empty in less than 4 operations.
+Example 2:
+
+Input: nums = [2,1,2,2,3,3]
+Output: -1
+Explanation: It is impossible to empty the array.
+ 
+
+Constraints:
+
+2 <= nums.length <= 105
+1 <= nums[i] <= 106
+
+
+
+
+
+
+Explanation:
+
+1. `unordered_map<int, int> mp;`: This initializes an unordered map `mp` that will store each unique number from the `nums` vector as a key and its frequency as the corresponding value.
+
+2. `for (auto a : nums) { mp[a]++; }`: This loop iterates through the `nums` vector and increments the count (value) associated with each number (key) in the unordered map `mp`.
+
+3. `for (auto a : mp) { ... }`: This loop iterates through the elements (key-value pairs) in the unordered map `mp`.
+
+   - `int t = a.second;`: It extracts the count (frequency) of the current number from the map entry.
+   
+   - `if (t == 1) return -1;`: If there's only one occurrence of a number, it means it cannot be paired with any other element, so the function returns `-1`, indicating that it's impossible to empty the array.
+   
+   - `count += t / 3;`: It calculates the number of groups of three elements that can be formed with the current count of the number and adds this count to the total number of operations.
+   
+   - `if (t % 3) count++;`: If there are remaining elements that cannot form a complete group of three, it adds one more operation to handle those remaining elements. Why? 
+
+   - For Example number of occurrence  = 10 its minimum number of operation is 3,3,2,2 = 4 instead of 10/2 = 5
+   to make it possible we divide 10/3 and the 1 which left over will make pair to one more occurrence.
+   
+   -3,3,3,1 will give us 3,3,2,2 and make operation possible
+
+4. Finally, the function returns the `count`, which represents the total number of operations required to empty the array as per the given conditions.
+
+This solution is designed to efficiently count the number of operations needed based on the frequencies of elements in the input array and handles the conditions for pairing and grouping elements to empty the array.
