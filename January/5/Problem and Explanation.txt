@@ -1,0 +1,55 @@
+300. Longest Increasing Subsequence
+
+Given an integer array nums, return the length of the longest strictly increasing 
+subsequence.
+
+
+Example 1:
+
+Input: nums = [10,9,2,5,3,7,101,18]
+Output: 4
+Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4.
+Example 2:
+
+Input: nums = [0,1,0,3,2,3]
+Output: 4
+Example 3:
+
+Input: nums = [7,7,7,7,7,7,7]
+Output: 1
+ 
+
+Constraints:
+
+1 <= nums.length <= 2500
+-104 <= nums[i] <= 104
+
+
+
+
+Explanation:
+
+`lis` function:
+This function calculates the length of the LIS ending at index `s` in the array `a`. It is a recursive function that follows these steps:
+1. **Base Case**: If `dp[s]` is not equal to `-1`, it means that the LIS for the current index `s` has already been calculated, so it returns the memoized result stored in `dp[s]`.
+2. It initializes `ans` to 1, indicating the minimum possible LIS length for the current index.
+3. It iterates through all elements before index `s`.
+4. For each index `i` before `s`, if the value at index `i` is less than the value at index `s`, it means it can be a part of the increasing subsequence.
+5. Recursively, it calls `lis(i, a) + 1` to compute the length of the LIS ending at index `s` by considering all previous valid elements.
+6. It keeps track of the maximum LIS length found for the current index `s`.
+
+Finally, it memoizes the result by storing the computed LIS for index `s` in the `dp` array and returns the calculated LIS.
+
+`lengthOfLIS` function:
+This function computes the length of the Longest Increasing Subsequence for the entire array. It follows these steps:
+1. Initializes the `dp` array with `-1` using `memset` to indicate that the LIS for any index has not been calculated yet.
+2. It initializes `len` to 0 to keep track of the maximum LIS length found in the array.
+3. It iterates through all indices in the `nums` vector.
+4. For each index `i`, it computes the LIS ending at that index using the `lis` function and updates `len` to keep track of the maximum LIS length found so far.
+
+Overall Logic:
+- The main idea is to use a recursive approach to find the LIS for each index in the array `nums`.
+- Memoization (using the `dp` array) is employed to store and reuse the computed LIS values for each index, preventing redundant calculations and optimizing the overall time complexity.
+- The function `lengthOfLIS` orchestrates the computation for the entire array, finding the maximum LIS length among all possible ending indices.
+
+ 
