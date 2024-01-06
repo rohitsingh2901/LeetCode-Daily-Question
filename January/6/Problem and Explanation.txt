@@ -1,0 +1,56 @@
+1235. Maximum Profit in Job Scheduling
+
+We have n jobs, where every job is scheduled to be done from startTime[i] to endTime[i], obtaining a profit of profit[i].
+
+You're given the startTime, endTime and profit arrays, return the maximum profit you can take such that there are no two jobs in the subset with overlapping time range.
+
+If you choose a job that ends at time X you will be able to start another job that starts at time X.
+
+ 
+
+Example 1:
+
+
+
+Input: startTime = [1,2,3,3], endTime = [3,4,5,6], profit = [50,10,40,70]
+Output: 120
+Explanation: The subset chosen is the first and fourth job. 
+Time range [1-3]+[3-6] , we get profit of 120 = 50 + 70.
+Example 2:
+
+
+
+Input: startTime = [1,2,3,4,6], endTime = [3,5,10,6,9], profit = [20,20,100,70,60]
+Output: 150
+Explanation: The subset chosen is the first, fourth and fifth job. 
+Profit obtained 150 = 20 + 70 + 60.
+Example 3:
+
+
+
+Input: startTime = [1,1,1], endTime = [2,3,4], profit = [5,6,4]
+Output: 6
+ 
+
+Constraints:
+
+1 <= startTime.length == endTime.length == profit.length <= 5 * 104
+1 <= startTime[i] < endTime[i] <= 109
+1 <= profit[i] <= 104
+
+
+
+Explanation:
+
+1. The code defines a function "jobScheduling" that takes three vectors "startTime", "endTime", and "profit" representing the jobs' start times, end times, and respective profits.
+
+2. It sorts the jobs based on their end times. Each job is represented as a vector "{end time, start time, profit}".
+
+3. It uses a "map<int, int>" named "dp" to store the maximum profit attainable at each end time. The map initially contains "{0, 0}" as the base case (end time 0 has a profit of 0).
+
+4. It iterates through the sorted jobs. For each job, it finds the right-most non-overlapping job using "prev(upper_bound())" where the end time of the selected job must be smaller or equal to the start time of the current job.
+
+5. Calculates the profit by adding the previous job's profit with the current job's profit if the condition of non-overlapping is met. If the new profit is greater than the existing maximum profit stored in the map, it updates the "dp" with this new profit for the current end time.
+
+6. Finally, it returns the maximum profit from the "dp" map by accessing the maximum profit associated with the maximum end time.
+
