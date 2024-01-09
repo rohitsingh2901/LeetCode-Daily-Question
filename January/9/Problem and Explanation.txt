@@ -1,0 +1,48 @@
+872. Leaf-Similar Trees
+
+Consider all the leaves of a binary tree, from left to right order, the values of those leaves form a leaf value sequence.
+
+
+
+For example, in the given tree above, the leaf value sequence is (6, 7, 4, 9, 8).
+
+Two binary trees are considered leaf-similar if their leaf value sequence is the same.
+
+Return true if and only if the two given trees with head nodes root1 and root2 are leaf-similar.
+
+ 
+
+Example 1:
+
+
+Input: root1 = [3,5,1,6,2,9,8,null,null,7,4], root2 = [3,5,1,6,7,4,2,null,null,null,null,null,null,9,8]
+Output: true
+Example 2:
+
+
+Input: root1 = [1,2,3], root2 = [1,3,2]
+Output: false
+ 
+
+Constraints:
+
+The number of nodes in each tree will be in the range [1, 200].
+Both of the given trees will have values in the range [0, 200].
+
+
+Explanation:
+
+
+1. `dfs` method:
+   - This method is a depth-first search traversal of a binary tree.
+   - It takes in a `TreeNode* root` and a reference to a vector `arr` which will store leaf node values.
+   - If the `root` is `NULL` (indicating an empty subtree), the function returns.
+   - If the current node is a leaf node (i.e., it has no left or right children), it appends its value (`root->val`) to the `arr` vector.
+   - The function then recursively calls `dfs` on the left and right subtrees of the current node.
+
+2. `leafSimilar` method:
+   - This function determines if two binary trees (`root1` and `root2`) are leaf-similar or not.
+   - It initializes two vectors `arr1` and `arr2` to store leaf node values for the two trees.
+   - It calls the `dfs` method for each tree, passing the root node and the respective arrays (`arr1` and `arr2`) to collect their leaf node values.
+   - Finally, it returns a boolean value indicating whether the arrays `arr1` and `arr2` are equal (i.e., if the trees are leaf-similar).
+
