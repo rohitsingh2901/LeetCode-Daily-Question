@@ -1,0 +1,44 @@
+
+1704. Determine if String Halves Are Alike
+
+You are given a string s of even length. Split this string into two halves of equal lengths, and let a be the first half and b be the second half.
+
+Two strings are alike if they have the same number of vowels ('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'). Notice that s contains uppercase and lowercase letters.
+
+Return true if a and b are alike. Otherwise, return false.
+
+ 
+
+Example 1:
+
+Input: s = "book"
+Output: true
+Explanation: a = "bo" and b = "ok". a has 1 vowel and b has 1 vowel. Therefore, they are alike.
+Example 2:
+
+Input: s = "textbook"
+Output: false
+Explanation: a = "text" and b = "book". a has 1 vowel whereas b has 2. Therefore, they are not alike.
+Notice that the vowel o is counted twice.
+ 
+
+Constraints:
+
+2 <= s.length <= 1000
+s.length is even.
+s consists of uppercase and lowercase letters
+
+
+Explanation:
+
+1. "unordered_set<char> vowels = {'a','A','e','E','i','I','o','O','u','U'};": This line creates an unordered set named "vowels" to store the vowels. The set contains both lowercase and uppercase vowels.
+
+2. "int f = 0, l = 0;": Two counters "f" and "l" are initialized to count the number of vowels in the first and second halves of the string, respectively.
+
+3. "for(int i = 0; i < s.length(); i++) {": This loop iterates through each character of the input string "s".
+
+4. Inside the loop:
+   - "if(vowels.find(s[i]) != vowels.end() && i < s.length() / 2) { f++; }": If the current character is a vowel and it belongs to the first half of the string, increment the counter "f".
+   - "else if(vowels.find(s[i]) != vowels.end() && i >= s.length() / 2) { l++; }": If the current character is a vowel and it belongs to the second half of the string, increment the counter "l".
+
+5. "return l == f;": The function returns "true" if the counts of vowels in both halves are equal; otherwise, it returns "false".
