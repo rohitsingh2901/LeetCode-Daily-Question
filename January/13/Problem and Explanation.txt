@@ -1,0 +1,57 @@
+1347. Minimum Number of Steps to Make Two Strings Anagram
+
+You are given two strings of the same length s and t. In one step you can choose any character of t and replace it with another character.
+
+Return the minimum number of steps to make t an anagram of s.
+
+An Anagram of a string is a string that contains the same characters with a different (or the same) ordering.
+
+ 
+
+Example 1:
+
+Input: s = "bab", t = "aba"
+Output: 1
+Explanation: Replace the first 'a' in t with b, t = "bba" which is anagram of s.
+Example 2:
+
+Input: s = "leetcode", t = "practice"
+Output: 5
+Explanation: Replace 'p', 'r', 'a', 'i' and 'c' from t with proper characters to make t anagram of s.
+Example 3:
+
+Input: s = "anagram", t = "mangaar"
+Output: 0
+Explanation: "anagram" and "mangaar" are anagrams. 
+ 
+
+Constraints:
+
+1 <= s.length <= 5 * 104
+s.length == t.length
+s and t consist of lowercase English letters only.
+
+
+Explanation:
+
+1. Initialization of Vectors ("m1" and "m2"):
+   - "vector<int> m1(26, 0)": Initializes a vector "m1" of size 26, representing the English alphabet. Each element is initially set to 0.
+   - "vector<int> m2(26, 0)": Initializes a similar vector "m2" for the second string.
+
+2. Count Occurrences of Characters in String "s":
+   - The first "for" loop iterates through each character "c" in the string "s".
+   - "m1[c - 'a']++": Increments the count of the character "c" in the vector "m1". The expression "c - 'a'" is used to map the character to the range [0, 25], assuming lowercase English letters.
+
+3. Count Occurrences of Characters in String "t":
+   - The second "for" loop does the same for the string "t", updating the counts in the vector "m2".
+
+4. Calculate the Minimum Number of Steps:
+   - The code initializes a variable "ans" to 0, which will store the final result.
+   - The third "for" loop iterates through each index "i" from 0 to 25 (representing the English alphabet).
+   - Inside the loop:
+      - "if (m1[i] > m2[i])": Checks if the count of the character at index "i" in string "s" is greater than the count in string "t".
+      - "ans += m1[i] - m2[i]": If the condition is true, it adds the difference between the counts to the answer. This accounts for the excess occurrences of characters in string "s" compared to string "t".
+
+5. Return the Result:
+   - The function returns the final result stored in the variable "ans".
+
