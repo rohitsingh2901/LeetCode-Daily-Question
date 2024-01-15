@@ -1,0 +1,58 @@
+2225. Find Players With Zero or One Losses
+
+You are given an integer array matches where matches[i] = [winneri, loseri] indicates that the player winneri defeated player loseri in a match.
+
+Return a list answer of size 2 where:
+
+answer[0] is a list of all players that have not lost any matches.
+answer[1] is a list of all players that have lost exactly one match.
+The values in the two lists should be returned in increasing order.
+
+Note:
+
+You should only consider the players that have played at least one match.
+The testcases will be generated such that no two matches will have the same outcome.
+ 
+
+Example 1:
+
+Input: matches = [[1,3],[2,3],[3,6],[5,6],[5,7],[4,5],[4,8],[4,9],[10,4],[10,9]]
+Output: [[1,2,10],[4,5,7,8]]
+Explanation:
+Players 1, 2, and 10 have not lost any matches.
+Players 4, 5, 7, and 8 each have lost one match.
+Players 3, 6, and 9 each have lost two matches.
+Thus, answer[0] = [1,2,10] and answer[1] = [4,5,7,8].
+Example 2:
+
+Input: matches = [[2,3],[1,3],[5,4],[6,4]]
+Output: [[1,2,5,6],[]]
+Explanation:
+Players 1, 2, 5, and 6 have not lost any matches.
+Players 3 and 4 each have lost two matches.
+Thus, answer[0] = [1,2,5,6] and answer[1] = [].
+ 
+
+Constraints:
+
+1 <= matches.length <= 105
+matches[i].length == 2
+1 <= winneri, loseri <= 105
+winneri != loseri
+All matches[i] are unique.
+
+
+
+Explanation:
+
+1. The class "Solution" contains a member function "findWinners", which takes a vector of vectors "matches" as input.
+
+2. The function uses a "map" named "mp" to keep track of wins and losses for each player. The key is the player's ID, and the value is a pair representing the number of wins (first element) and losses (second element).
+
+3. The function then iterates through each match in the "matches" vector and updates the counts in the map accordingly.
+
+4. After processing all matches, the function creates a 2D vector named "ans" with two empty vectors inside it. The first vector will store players with zero losses, and the second vector will store players with one loss.
+
+5. The function iterates over the map entries using a range-based for loop. For each player ("i"), it checks the number of losses ("v.second"). If the player has zero losses, their ID is added to "ans[0]", and if they have one loss, their ID is added to "ans[1]".
+
+6. Finally, the function returns the "ans" vector, containing the two lists of players as required by the problem statement.
