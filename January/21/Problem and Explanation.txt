@@ -1,0 +1,50 @@
+198. House Robber
+
+You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security systems connected and it will automatically contact the police if two adjacent houses were broken into on the same night.
+
+Given an integer array nums representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.
+
+ 
+
+Example 1:
+
+Input: nums = [1,2,3,1]
+Output: 4
+Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
+Total amount you can rob = 1 + 3 = 4.
+Example 2:
+
+Input: nums = [2,7,9,3,1]
+Output: 12
+Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1).
+Total amount you can rob = 2 + 9 + 1 = 12.
+ 
+
+Constraints:
+
+1 <= nums.length <= 100
+0 <= nums[i] <= 400
+
+Explanation:
+
+1. Function Definition:
+   You've defined a function called "rob" that takes a vector of integers representing the amount of money in each house.
+
+2. Base Cases Handling:
+   - If there are no houses ("n == 0"), the function returns 0 because there's no money to be robbed.
+   - If there is only one house ("n == 1"), the function returns the amount of money in that house since robbing it wouldn't trigger any alarms.
+   - If there are two houses ("n == 2"), the function returns the maximum amount between the money in the first house and the money in the second house. This ensures that you choose the house with more money to rob.
+
+3. Dynamic Programming Initialization:
+   You initialize a dynamic programming array ("dp") of size "n" to store the maximum amount of money that can be robbed up to each house.
+
+4. Base Cases Initialization for the First Two Houses:
+   The first and second elements of the dynamic programming array ("dp[0]" and "dp[1]") are set based on the amounts of money in the first and second houses.
+
+5. Dynamic Programming Iteration:
+   You iterate through the houses starting from the third one. For each house, you calculate the maximum amount of money that can be robbed up to that house. This is done by considering the choice of robbing the current house or skipping it, and choosing the option that yields more money.
+
+6. Return the Result:
+   The final result is the maximum amount of money that can be robbed, which is stored in the last element of the dynamic programming array ("dp[n - 1]").
+
+In essence, your code uses dynamic programming to build up solutions to subproblems, ensuring that you maximize the total amount of money robbed while avoiding adjacent houses triggering alarms.
