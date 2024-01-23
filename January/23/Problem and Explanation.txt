@@ -1,0 +1,51 @@
+1239. Maximum Length of a Concatenated String with Unique Characters
+
+You are given an array of strings arr. A string s is formed by the concatenation of a subsequence of arr that has unique characters.
+
+Return the maximum possible length of s.
+
+A subsequence is an array that can be derived from another array by deleting some or no elements without changing the order of the remaining elements.
+
+ 
+
+Example 1:
+
+Input: arr = ["un","iq","ue"]
+Output: 4
+Explanation: All the valid concatenations are:
+- ""
+- "un"
+- "iq"
+- "ue"
+- "uniq" ("un" + "iq")
+- "ique" ("iq" + "ue")
+Maximum length is 4.
+Example 2:
+
+Input: arr = ["cha","r","act","ers"]
+Output: 6
+Explanation: Possible longest valid concatenations are "chaers" ("cha" + "ers") and "acters" ("act" + "ers").
+Example 3:
+
+Input: arr = ["abcdefghijklmnopqrstuvwxyz"]
+Output: 26
+Explanation: The only string in arr has all 26 characters.
+ 
+
+Constraints:
+
+1 <= arr.length <= 16
+1 <= arr[i].length <= 26
+arr[i] contains only lowercase English letters.
+
+
+Explanation:
+
+1. The "dfs" function is a recursive function that explores all possibilities of forming a concatenated string with unique characters.
+2. The function takes three parameters: "idx" (the current index in the array "arr"), "arr" (the array of strings), and "vis" (a vector to keep track of visited characters).
+3. The base case of the recursion is when "idx" reaches the size of the array ("arr.size()"), in which case it returns 0.
+4. The "skip" variable is used to represent the case where the current string is skipped, and the function continues with the next string in the array.
+5. The loop checks if the characters in the current string are unique by using the "vis" vector. If any character is already visited, it returns the "skip" value.
+6. The "noskip" variable represents the case where the current string is included in the concatenated result. It adds the length of the current string to the result and continues with the next string in the array.
+7. The function returns the maximum length between the "skip" and "noskip" cases.
+8. The "maxLength" function initializes the "vis" vector and calls the "dfs" function with the initial parameters.
