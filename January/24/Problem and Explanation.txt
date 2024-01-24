@@ -1,0 +1,72 @@
+1457. Pseudo-Palindromic Paths in a Binary Tree
+Solved
+Medium
+Topics
+Companies
+Hint
+Given a binary tree where node values are digits from 1 to 9. A path in the binary tree is said to be pseudo-palindromic if at least one permutation of the node values in the path is a palindrome.
+
+Return the number of pseudo-palindromic paths going from the root node to leaf nodes.
+
+ 
+
+Example 1:
+
+
+
+Input: root = [2,3,1,3,1,null,1]
+Output: 2 
+Explanation: The figure above represents the given binary tree. There are three paths going from the root node to leaf nodes: the red path [2,3,3], the green path [2,1,1], and the path [2,3,1]. Among these paths only red path and green path are pseudo-palindromic paths since the red path [2,3,3] can be rearranged in [3,2,3] (palindrome) and the green path [2,1,1] can be rearranged in [1,2,1] (palindrome).
+Example 2:
+
+
+
+Input: root = [2,1,1,1,3,null,null,null,null,null,1]
+Output: 1 
+Explanation: The figure above represents the given binary tree. There are three paths going from the root node to leaf nodes: the green path [2,1,1], the path [2,1,3,1], and the path [2,1]. Among these paths only the green path is pseudo-palindromic since [2,1,1] can be rearranged in [1,2,1] (palindrome).
+Example 3:
+
+Input: root = [9]
+Output: 1
+ 
+
+Constraints:
+
+The number of nodes in the tree is in the range [1, 105].
+1 <= Node.val <= 9
+
+
+
+Explanation:
+
+1. Class Definition:
+   - Code defines a class named "Solution".
+
+2. Member Variables:
+   - "int digits[10];": An array to keep track of the count of each digit encountered in the current path.
+   - "int count = 0;": A variable to store the count of pseudo-palindromic paths.
+
+3. isPalindrome Function:
+   - "bool isPalindrome()": Checks if the current path is pseudo-palindromic.
+   - "int odd = 0;": Initializes a variable to count the number of digits with odd occurrences.
+   - Iterates through digits 1 to 9 and increments "odd" for each digit with an odd count.
+   - If more than one digit has an odd count, returns "false" (not a palindrome), otherwise returns "true".
+
+4. DFS Function:
+   - "void dfs(TreeNode* root)": Performs depth-first search on the binary tree.
+   - If "root" is "nullptr" (reached the end of a branch), returns.
+   - Increments the count of the current digit in the "digits" array.
+   - If the current node is a leaf node:
+      - Checks if the current path is pseudo-palindromic using "isPalindrome".
+      - If true, increments the total count.
+   - Otherwise, recursively calls "dfs" for the left and right children.
+   - Decrements the count of the current digit in the "digits" array (backtracks).
+
+5. pseudoPalindromicPaths Function:
+   - "int pseudoPalindromicPaths(TreeNode* root)": Initializes the DFS traversal by calling "dfs" with the root of the tree.
+   - Returns the final count of pseudo-palindromic paths.
+
+6. Overall:
+   - This solution uses a depth-first search approach to traverse the binary tree and counts the occurrences of each digit in the current path.
+   - The "isPalindrome" function checks whether the current path is pseudo-palindromic, and the count is updated accordingly.
+   - The final count is returned as the result.
