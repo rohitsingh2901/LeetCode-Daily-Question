@@ -1,0 +1,47 @@
+1143. Longest Common Subsequence
+
+Given two strings text1 and text2, return the length of their longest common subsequence. If there is no common subsequence, return 0.
+
+A subsequence of a string is a new string generated from the original string with some characters (can be none) deleted without changing the relative order of the remaining characters.
+
+For example, "ace" is a subsequence of "abcde".
+A common subsequence of two strings is a subsequence that is common to both strings.
+
+ 
+
+Example 1:
+
+Input: text1 = "abcde", text2 = "ace" 
+Output: 3  
+Explanation: The longest common subsequence is "ace" and its length is 3.
+Example 2:
+
+Input: text1 = "abc", text2 = "abc"
+Output: 3
+Explanation: The longest common subsequence is "abc" and its length is 3.
+Example 3:
+
+Input: text1 = "abc", text2 = "def"
+Output: 0
+Explanation: There is no such common subsequence, so the result is 0.
+ 
+
+Constraints:
+
+1 <= text1.length, text2.length <= 1000
+text1 and text2 consist of only lowercase English characters.
+
+
+Explanation:
+
+1. The "lcs" function is a recursive function that calculates the length of the longest common subsequence between the substrings of "text1" and "text2" up to indices "i" and "j" respectively. It returns the length of the longest common subsequence.
+
+2. Within the "lcs" function:
+   - Base cases: If either "i" or "j" becomes less than 0, it means one of the strings is empty, so the length of the common subsequence is 0.
+   - If the value of "dp[i][j]" is not equal to "-1", it means the value has already been computed, so it returns the cached result.
+   - If the characters at indices "i" and "j" in "text1" and "text2" match, it recursively calls "lcs" with decremented indices and adds 1 to the result.
+   - If the characters don't match, it recursively calls "lcs" for both cases (excluding one character from either "text1" or "text2") and returns the maximum of these two.
+
+3. The "longestCommonSubsequence" function initializes the "dp" array with "-1", indicating that the value at each cell is not calculated yet. Then, it calls the "lcs" function with the lengths of "text1" and "text2" as indices.
+
+This code should produce the correct output for the given problem. However, it's worth noting that this solution has exponential time complexity due to overlapping subproblems being recalculated multiple times. Using dynamic programming with tabulation (bottom-up) approach, as shown in the previous Python solution, is more efficient for this problem.
