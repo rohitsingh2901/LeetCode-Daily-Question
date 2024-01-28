@@ -1,0 +1,51 @@
+
+1074. Number of Submatrices That Sum to Target
+
+Given a matrix and a target, return the number of non-empty submatrices that sum to target.
+
+A submatrix x1, y1, x2, y2 is the set of all cells matrix[x][y] with x1 <= x <= x2 and y1 <= y <= y2.
+
+Two submatrices (x1, y1, x2, y2) and (x1', y1', x2', y2') are different if they have some coordinate that is different: for example, if x1 != x1'.
+
+ 
+
+Example 1:
+
+
+Input: matrix = [[0,1,0],[1,1,1],[0,1,0]], target = 0
+Output: 4
+Explanation: The four 1x1 submatrices that only contain 0.
+Example 2:
+
+Input: matrix = [[1,-1],[-1,1]], target = 0
+Output: 5
+Explanation: The two 1x2 submatrices, plus the two 2x1 submatrices, plus the 2x2 submatrix.
+Example 3:
+
+Input: matrix = [[904]], target = 0
+Output: 0
+ 
+
+Constraints:
+
+1 <= matrix.length <= 100
+1 <= matrix[0].length <= 100
+-1000 <= matrix[i] <= 1000
+-10^8 <= target <= 10^8
+
+Explanation:
+
+1. "getCount()" function:
+   - This function takes a vector of prefix sums ("prefix") and the target value ("target") as input.
+   - It iterates through the prefix sums and maintains a running sum ("sum") along with an unordered map ("m") to store the frequency of encountered prefix sums.
+   - For each prefix sum encountered, it checks if there exists a previous prefix sum such that the difference between the current sum and the target is equal to that previous prefix sum. If so, it increments the answer by the frequency of that previous prefix sum.
+   - Finally, it updates the frequency of the current prefix sum in the map.
+   - The function returns the final count of submatrices.
+
+2. "numSubmatrixSumTarget()" function:
+   - This function takes the matrix and the target value as input.
+   - It iterates through all possible starting rows ("i") and ending rows ("j") for the submatrix.
+   - For each starting row, it initializes a prefix vector ("prefix") with zeros, representing the prefix sums for each column.
+   - It then iterates through the ending rows, updating the prefix vector accordingly by adding the corresponding elements from the matrix.
+   - For each submatrix formed, it calls the "getCount()" function to count the number of submatrices with the target sum and adds this count to the final answer.
+   - Finally, it returns the total count of submatrices with the target sum.
