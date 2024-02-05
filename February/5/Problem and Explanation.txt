@@ -1,0 +1,39 @@
+387. First Unique Character in a String
+
+Given a string s, find the first non-repeating character in it and return its index. If it does not exist, return -1.
+
+ 
+Example 1:
+
+Input: s = "leetcode"
+Output: 0
+Example 2:
+
+Input: s = "loveleetcode"
+Output: 2
+Example 3:
+
+Input: s = "aabb"
+Output: -1
+ 
+
+Constraints:
+
+1 <= s.length <= 105
+s consists of only lowercase English letters.
+
+Explanation:
+
+1. Function Definition:
+   - `int firstUniqChar(string s)`: You define a member function `firstUniqChar` that takes a string `s` as input and returns an integer.
+   - `unordered_map<char, int> m;`: You declare an unordered map named `m` with characters as keys and integer counts as values. This map is used to store the frequency of each character in the string.
+   
+2. Counting Frequencies:
+   - `for (int i = 0; i < s.length(); i++) m[s[i]]++;`: This loop iterates over each character in the input string `s`. For each character, it increments the count in the map `m`. This loop counts the frequency of each character in the string.
+
+3. Finding First Unique Character:
+   - `for (int i = 0; i < s.length(); i++) { ... }`: This loop iterates over each character in the input string `s` again.
+   - `if (m[s[i]] == 1) return i;`: For each character, it checks if its frequency in the map `m` is equal to 1. If so, it means that the current character is unique, and it returns its index `i`.
+   
+4. Returning -1 if No Unique Character is Found:
+   - If the loop completes without finding any unique character, it returns -1, indicating that there is no unique character in the string.
