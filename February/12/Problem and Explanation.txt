@@ -1,0 +1,47 @@
+169. Majority Element
+
+Given an array nums of size n, return the majority element.
+
+The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
+
+ 
+
+Example 1:
+
+Input: nums = [3,2,3]
+Output: 3
+Example 2:
+
+Input: nums = [2,2,1,1,1,2,2]
+Output: 2
+ 
+
+Constraints:
+
+n == nums.length
+1 <= n <= 5 * 104
+-109 <= nums[i] <= 109
+
+Explanation:
+
+1. `int majorityElement(vector<int>& nums) {`:
+   - This is the definition of the `majorityElement` function which takes a reference to a vector of integers (`nums`) as input and returns an integer.
+
+2. `int ele;`:
+   - This declares an integer variable `ele` which will store the potential majority element.
+
+3. `int count = 0;`:
+   - This initializes an integer variable `count` to keep track of the count of the current potential majority element.
+
+4. `for(int i = 0; i < nums.size(); i++) {`:
+   - This starts a loop that iterates over each element of the input vector `nums`.
+
+5. `if(count == 0) { ele = nums[i]; }`:
+   - If the `count` variable is zero, it means we have encountered a potential new majority element, so we update `ele` to be the current element `nums[i]`.
+
+6. `if(ele == nums[i]) { count++; } else { count--; }`:
+   - If the current element `nums[i]` matches the potential majority element `ele`, the `count` is incremented.
+   - If it doesn't match, the `count` is decremented.
+
+7. `return ele;`:
+   - After the loop finishes, the `ele` variable contains the potential majority element, so it's returned as the result.
