@@ -1,0 +1,57 @@
+231. Power of Two
+
+Given an integer n, return true if it is a power of two. Otherwise, return false.
+
+An integer n is a power of two, if there exists an integer x such that n == 2x.
+
+ 
+
+Example 1:
+
+Input: n = 1
+Output: true
+Explanation: 20 = 1
+Example 2:
+
+Input: n = 16
+Output: true
+Explanation: 24 = 16
+Example 3:
+
+Input: n = 3
+Output: false
+ 
+
+Constraints:
+
+-231 <= n <= 231 - 1
+
+
+Explanation:
+
+1. Check if `n` is greater than 0: We need to ensure that `n` is a positive integer because negative integers cannot be powers of two. If `n` is less than or equal to 0, it cannot be a power of two, so we return `False`.
+
+2. Check if there is only one bit set to 1 in `n`: This is the crucial part. In a binary representation of a power of two, there is only one bit set to 1, and all other bits are 0. For example:
+
+   - Binary representation of 1: `0001`
+   - Binary representation of 2: `0010`
+   - Binary representation of 4: `0100`
+   - Binary representation of 8: `1000`
+   
+   This is true for all powers of two. There's only one bit set to 1 in their binary representation. To check if there's only one bit set to 1 in `n`, we can use the bitwise AND operation between `n` and `n - 1`. If the result is 0, it means there's only one bit set to 1.
+
+   For example, let's take `n = 8`:
+   - Binary representation of 8: `1000`
+   - Binary representation of 8 - 1 = 7: `0111`
+   - Performing bitwise AND operation: `1000 & 0111 = 0000`
+
+   Since the result is 0, we conclude that `n` has only one bit set to 1, making it a power of two.
+
+   Similarly, let's take `n = 16`:
+   - Binary representation of 16: `10000`
+   - Binary representation of 16 - 1 = 15: `01111`
+   - Performing bitwise AND operation: `10000 & 01111 = 0`
+
+   Again, the result is 0, indicating that `n` is a power of two.
+
+By combining these two conditions, we determine if `n` is a power of two. If it satisfies both conditions, the function returns `True`; otherwise, it returns `False`. This approach works efficiently in O(1) time complexity.
