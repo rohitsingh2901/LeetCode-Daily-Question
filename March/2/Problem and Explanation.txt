@@ -1,0 +1,48 @@
+977. Squares of a Sorted Array
+
+Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.
+
+
+Example 1:
+
+Input: nums = [-4,-1,0,3,10]
+Output: [0,1,9,16,100]
+Explanation: After squaring, the array becomes [16,1,0,9,100].
+After sorting, it becomes [0,1,9,16,100].
+Example 2:
+
+Input: nums = [-7,-3,2,3,11]
+Output: [4,9,9,49,121]
+ 
+
+Constraints:
+
+1 <= nums.length <= 104
+-104 <= nums[i] <= 104
+nums is sorted in non-decreasing order.
+
+
+Explanation:
+
+1. Initialization: 
+   - It initializes an integer `n` with the size of the input vector `nums`.
+   - It initializes a vector `ans` of integers with size `n` to store the squared values.
+
+2. Pointer Initialization: 
+   - It initializes two integer pointers `l` and `r` to 0 and `n - 1` respectively. 
+   - `l` points to the start of the input array and `r` points to the end.
+
+3. Iteration Over Input Array:
+   - It iterates over the input array in reverse order (from `n - 1` to `0`).
+   - This reverse iteration ensures that the resulting `ans` vector will be sorted in non-decreasing order.
+
+4. Value Selection: 
+   - At each iteration, it compares the absolute values of elements pointed to by `l` and `r`.
+   - If the absolute value of `nums[l]` is less than that of `nums[r]`, it selects `nums[r]` for squaring and moves `r` to the left.
+   - Otherwise, it selects `nums[l]` for squaring and moves `l` to the right.
+
+5. Squared Value Assignment: 
+   - It squares the selected value (`val`) and assigns it to the current index of the `ans` vector.
+
+6. Return: 
+   - After the iteration completes, it returns the vector `ans` containing the squared values in non-decreasing order.
