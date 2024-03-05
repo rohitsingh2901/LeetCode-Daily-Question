@@ -1,0 +1,57 @@
+1750. Minimum Length of String After Deleting Similar Ends
+
+Given a string s consisting only of characters 'a', 'b', and 'c'. You are asked to apply the following algorithm on the string any number of times:
+
+Pick a non-empty prefix from the string s where all the characters in the prefix are equal.
+Pick a non-empty suffix from the string s where all the characters in this suffix are equal.
+The prefix and the suffix should not intersect at any index.
+The characters from the prefix and suffix must be the same.
+Delete both the prefix and the suffix.
+Return the minimum length of s after performing the above operation any number of times (possibly zero times).
+
+ 
+
+Example 1:
+
+Input: s = "ca"
+Output: 2
+Explanation: You can't remove any characters, so the string stays as is.
+Example 2:
+
+Input: s = "cabaabac"
+Output: 0
+Explanation: An optimal sequence of operations is:
+- Take prefix = "c" and suffix = "c" and remove them, s = "abaaba".
+- Take prefix = "a" and suffix = "a" and remove them, s = "baab".
+- Take prefix = "b" and suffix = "b" and remove them, s = "aa".
+- Take prefix = "a" and suffix = "a" and remove them, s = "".
+Example 3:
+
+Input: s = "aabccabba"
+Output: 3
+Explanation: An optimal sequence of operations is:
+- Take prefix = "aa" and suffix = "a" and remove them, s = "bccabb".
+- Take prefix = "b" and suffix = "bb" and remove them, s = "cca".
+ 
+
+Constraints:
+
+1 <= s.length <= 105
+s only consists of characters 'a', 'b', and 'c'.
+
+
+Explanation:
+
+1. Initialization: Two pointers `i` and `j` are initialized. `i` starts from the beginning of the string (`0`), and `j` starts from the end of the string (`s.length() - 1`).
+
+2. Main Loop: The main loop iterates as long as `i` is less than `j` (ensuring they haven't crossed each other) and the characters at the corresponding indices are equal.
+
+3. Common Character Identification: Within the loop, the common character (either in prefix or suffix) is identified and stored in the variable `c`.
+
+4. Movement of Pointers: Two nested while loops are used to move the pointers:
+   - The left pointer `i` is moved until a different character is encountered or until it reaches the right pointer `j`.
+   - The right pointer `j` is moved until a different character is encountered or until it reaches the left pointer `i`.
+
+5. Calculation of Remaining Length: After the loop exits, the length of the remaining substring is calculated by subtracting the final positions of the pointers `i` and `j` and adding `1` (since lengths are inclusive of both endpoints).
+
+6. Return: The length of the remaining substring is returned.
