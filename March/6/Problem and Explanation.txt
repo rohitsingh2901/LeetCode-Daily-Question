@@ -1,0 +1,47 @@
+141. Linked List Cycle
+
+Given head, the head of a linked list, determine if the linked list has a cycle in it.
+
+There is a cycle in a linked list if there is some node in the list that can be reached again by continuously following the next pointer. Internally, pos is used to denote the index of the node that tail's next pointer is connected to. Note that pos is not passed as a parameter.
+
+Return true if there is a cycle in the linked list. Otherwise, return false.
+
+ 
+
+Example 1:
+
+
+Input: head = [3,2,0,-4], pos = 1
+Output: true
+Explanation: There is a cycle in the linked list, where the tail connects to the 1st node (0-indexed).
+Example 2:
+
+
+Input: head = [1,2], pos = 0
+Output: true
+Explanation: There is a cycle in the linked list, where the tail connects to the 0th node.
+Example 3:
+
+
+Input: head = [1], pos = -1
+Output: false
+Explanation: There is no cycle in the linked list.
+ 
+
+Constraints:
+
+The number of the nodes in the list is in the range [0, 104].
+-105 <= Node.val <= 105
+pos is -1 or a valid index in the linked-list.
+ 
+
+Explanation:
+Floyd's Tortoise and Hare algorithm for detecting cycles in a linked list. It defines a class `Solution` with a method `hasCycle` that takes a pointer to the head of a singly-linked list and returns true if the list contains a cycle, otherwise false.
+
+- `ListNode` is a struct representing a node in the linked list. It has two members: `val` for the value of the node, and `next` for a pointer to the next node in the list.
+- The `Solution` class provides a method `hasCycle` that takes a pointer to the head of the linked list as input.
+- Inside the `hasCycle` method, two pointers `slow` and `fast` are initialized to the head of the list.
+- The method then enters a while loop that continues as long as both `fast` and `fast->next` (the next node of `fast`) are not null.
+- In each iteration of the loop, the `slow` pointer moves one step forward (`slow=slow->next`), while the `fast` pointer moves two steps forward (`fast=fast->next->next`).
+- If at any point the `slow` and `fast` pointers meet (`slow==fast`), it means there is a cycle in the linked list, and the method returns true.
+- If the loop terminates without finding a cycle, the method returns false.
