@@ -1,0 +1,54 @@
+1171. Remove Zero Sum Consecutive Nodes from Linked List
+
+Given the head of a linked list, we repeatedly delete consecutive sequences of nodes that sum to 0 until there are no such sequences.
+
+After doing so, return the head of the final linked list.  You may return any such answer.
+
+ 
+
+(Note that in the examples below, all sequences are serializations of ListNode objects.)
+
+Example 1:
+
+Input: head = [1,2,-3,3,1]
+Output: [3,1]
+Note: The answer [1,2,1] would also be accepted.
+Example 2:
+
+Input: head = [1,2,3,-3,4]
+Output: [1,2,4]
+Example 3:
+
+Input: head = [1,2,3,-3,-2]
+Output: [1]
+ 
+
+Constraints:
+
+The given linked list will contain between 1 and 1000 nodes.
+Each node in the linked list has -1000 <= node.val <= 1000.
+
+Explanation:
+
+1. Initialization:
+   - You initialize a dummy node dummy with value 0 and set its next pointer to the head of the input linked list.
+
+2. Iteration through the Linked List:
+   - You start a while loop with the condition current != nullptr. This loop iterates through each node of the linked list until it reaches the end.
+   - Inside the loop, you initialize a pointer ptr to the next node after current.
+
+3. Cumulative Sum Calculation:
+   - You initialize a variable sum to 0, which will hold the cumulative sum of nodes encountered so far.
+   - You enter another while loop with the condition ptr != nullptr. This loop iterates through the subsequent nodes starting from current.
+   - Within this loop, you add the value of each node to the sum.
+   - If the sum becomes zero during this process, it means that there is a zero-sum subsequence. You remove the nodes between the current node and the ptr node (inclusive of ptr).
+   - Regardless of whether a zero-sum subsequence is found, you move the ptr to the next node.
+
+4. Moving to the Next Node:
+   - After processing the current node and removing any zero-sum subsequence, you move current to its next node.
+
+5. Returning the Modified Linked List:
+   - Once the loop finishes, you return the next pointer of the dummy node, which now points to the head of the modified linked list.
+
+6. Memory Management:
+   - There are memory leaks in your code, as you allocate memory for the dummy node but don't deallocate it. It's good practice to free the memory allocated for dynamically allocated nodes.
