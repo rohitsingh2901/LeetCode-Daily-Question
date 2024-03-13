@@ -1,0 +1,54 @@
+2485. Find the Pivot Integer
+
+Given a positive integer n, find the pivot integer x such that:
+
+The sum of all elements between 1 and x inclusively equals the sum of all elements between x and n inclusively.
+Return the pivot integer x. If no such integer exists, return -1. It is guaranteed that there will be at most one pivot index for the given input.
+
+ 
+
+Example 1:
+
+Input: n = 8
+Output: 6
+Explanation: 6 is the pivot integer since: 1 + 2 + 3 + 4 + 5 + 6 = 6 + 7 + 8 = 21.
+Example 2:
+
+Input: n = 1
+Output: 1
+Explanation: 1 is the pivot integer since: 1 = 1.
+Example 3:
+
+Input: n = 4
+Output: -1
+Explanation: It can be proved that no such integer exist.
+ 
+
+Constraints:
+
+1 <= n <= 1000
+
+Explanation:
+
+1. Nsum function: This function calculates the sum of integers from 1 to n. It uses the formula (n * (n + 1)) / 2, which is a well-known formula for the sum of an arithmetic series.
+2. pivotInteger function: This function aims to find the pivot integer x as described in the problem statement.
+   - It iterates through possible values of x from 1 to n.
+   - For each x, it checks if the sum of elements before x is equal to the sum of elements after x.
+   - It does this by comparing the sum of elements before x (calculated using Nsum(i)) with the sum of elements after x (calculated using Nsum(n) - Nsum(i - 1)).
+   - If such an x is found, it returns i.
+   - If no such x is found after iterating through all possible values from 1 to n, it returns -1.
+
+Let's analyze the time and space complexity of this approach:
+
+Time Complexity:
+- The time complexity of the `Nsum` function is O(1) because it involves basic arithmetic operations.
+- In the `pivotInteger` function, the loop iterates from 1 to `n`, so it runs in O(n) time.
+- Inside the loop, each iteration involves two calls to the `Nsum` function, which is again O(1).
+- Therefore, the overall time complexity of this approach is O(n).
+
+Space Complexity:
+- The space complexity of this approach is O(1) because it only uses a constant amount of extra space regardless of the input size `n`.
+- There are no data structures or recursion that would lead to additional space consumption proportional to the input size.
+- Hence, the space complexity is constant, O(1).
+
+In summary, this approach has a time complexity of O(n) and a space complexity of O(1), which makes it efficient and suitable for the given constraints (1 <= n <= 1000).
