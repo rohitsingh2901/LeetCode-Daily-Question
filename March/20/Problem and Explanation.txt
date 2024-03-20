@@ -1,0 +1,53 @@
+1669. Merge In Between Linked Lists
+
+You are given two linked lists: list1 and list2 of sizes n and m respectively.
+
+Remove list1's nodes from the ath node to the bth node, and put list2 in their place.
+
+The blue edges and nodes in the following figure indicate the result:
+
+
+Build the result list and return its head.
+
+ 
+
+Example 1:
+
+
+Input: list1 = [10,1,13,6,9,5], a = 3, b = 4, list2 = [1000000,1000001,1000002]
+Output: [10,1,13,1000000,1000001,1000002,5]
+Explanation: We remove the nodes 3 and 4 and put the entire list2 in their place. The blue edges and nodes in the above figure indicate the result.
+Example 2:
+
+
+Input: list1 = [0,1,2,3,4,5,6], a = 2, b = 5, list2 = [1000000,1000001,1000002,1000003,1000004]
+Output: [0,1,1000000,1000001,1000002,1000003,1000004,6]
+Explanation: The blue edges and nodes in the above figure indicate the result.
+ 
+
+Constraints:
+
+3 <= list1.length <= 10^4
+1 <= a <= b < list1.length - 1
+1 <= list2.length <= 10^4
+
+
+Explanation:
+
+1. Traverse to the ath node.
+2. Store the node after the bth node or NULL if it doesn't exist.
+3. Link list2 after the ath node.
+4. Traverse to the node after the bth node or the end of the list.
+5. Connect the remaining nodes after list2.
+
+
+ Time Complexity:
+- Traversal: The code traverses through the linked list from the start up to the ath node. Then, it traverses through the linked list again from the bth node to the end. These traversals have a time complexity of O(n), where n is the number of nodes in the linked list.
+- Linking: Linking list2 after the ath node and connecting the remaining nodes after list2 both require constant time operations.
+- Overall, the time complexity is O(n), where n is the number of nodes in the linked list.
+
+ Space Complexity:
+- The code uses a constant amount of extra space for variables like 'temp', 'end', and 'x'.
+- Therefore, the space complexity is O(1), which means it's constant relative to the size of the input linked lists.
+
+So, the time complexity of the provided code is O(n), and the space complexity is O(1).
