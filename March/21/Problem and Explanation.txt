@@ -1,0 +1,51 @@
+206. Reverse Linked List
+
+Given the head of a singly linked list, reverse the list, and return the reversed list.
+
+ 
+
+Example 1:
+
+
+Input: head = [1,2,3,4,5]
+Output: [5,4,3,2,1]
+Example 2:
+
+
+Input: head = [1,2]
+Output: [2,1]
+Example 3:
+
+Input: head = []
+Output: []
+ 
+
+Constraints:
+
+The number of nodes in the list is the range [0, 5000].
+-5000 <= Node.val <= 5000
+
+Explanation:
+
+1. It initializes three pointers: prev as NULL, curr as the head of the linked list, and next as NULL.
+2. It iterates through the list:
+   - At each step, it updates next to point to the next node after curr.
+   - It updates curr->next to point to prev, effectively reversing the pointer direction.
+   - It moves prev to curr and curr to next.
+3. It continues until curr becomes NULL.
+4. Finally, it returns prev, which will be pointing to the new head of the reversed list.
+
+
+Time Complexity:
+- The algorithm iterates through the entire linked list once.
+- At each iteration, it performs constant time operations.
+- Therefore, the time complexity is O(n), where n is the number of nodes in the linked list.
+
+Space Complexity:
+- The algorithm uses only a constant amount of extra space for the pointers.
+- Therefore, the space complexity is O(1).
+
+In summary:
+- Time Complexity: O(n)
+- Space Complexity: O(1)
+ 
