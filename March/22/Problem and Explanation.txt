@@ -1,0 +1,44 @@
+234. Palindrome Linked List
+
+Given the head of a singly linked list, return true if it is a 
+palindrome
+ or false otherwise.
+
+ 
+
+Example 1:
+
+
+Input: head = [1,2,2,1]
+Output: true
+Example 2:
+
+
+Input: head = [1,2]
+Output: false
+ 
+
+Constraints:
+
+The number of nodes in the list is in the range [1, 105].
+0 <= Node.val <= 9
+
+
+Explanation:
+
+1. reverseLL Function: This function reverses a linked list. It takes the head of a linked list as input, iterates through the list, and reverses the links between nodes. It returns the new head of the reversed list.
+
+2. isPalindrome Function: This function checks whether the given linked list is a palindrome or not. It follows these steps:
+   - First, it checks if the list is empty or contains only one node. In such cases, it returns true because a list with 0 or 1 node is considered a palindrome.
+   - Then, it initializes two pointers, 'slow' and 'fast', both pointing to the head of the list, and a pointer 'start' also pointing to the head.
+   - The 'slow' pointer moves one step at a time, and the 'fast' pointer moves two steps at a time. This way, when the 'fast' pointer reaches the end of the list, the 'slow' pointer will be at the middle of the list.
+   - After finding the middle, the code reverses the second half of the list using the 'reverseLL' function.
+   - Then, it iterates through both halves simultaneously, comparing the values of corresponding nodes. If any values don't match, it returns false. Otherwise, it returns true.
+
+
+Time Complexity: O(n)
+- The reverse linked list function ('reverseLL') traverses the list once, resulting in O(n) time complexity.
+- The palindrome check function ('isPalindrome') also traverses the list once, leading to O(n) time complexity overall.
+
+Space Complexity: O(1)
+- Both the reverse linked list function and the palindrome check function use only a constant amount of extra space for pointers, resulting in O(1) space complexity.
