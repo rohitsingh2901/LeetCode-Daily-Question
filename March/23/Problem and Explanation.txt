@@ -1,0 +1,63 @@
+143. Reorder List
+
+You are given the head of a singly linked-list. The list can be represented as:
+
+L0 → L1 → … → Ln - 1 → Ln
+Reorder the list to be on the following form:
+
+L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …
+You may not modify the values in the list's nodes. Only nodes themselves may be changed.
+
+ 
+
+Example 1:
+
+
+Input: head = [1,2,3,4]
+Output: [1,4,2,3]
+Example 2:
+
+
+Input: head = [1,2,3,4,5]
+Output: [1,5,2,4,3]
+ 
+
+Constraints:
+
+The number of nodes in the list is in the range [1, 5 * 104].
+1 <= Node.val <= 1000
+
+Explanation:
+1. Check for base cases:
+   - The code checks if the linked list is empty or has only one or two nodes.
+   - If it satisfies any of these conditions, the function returns early as there's no need to reorder the list.
+
+2. Find the middle of the list:
+   - It uses the slow and fast pointer technique to find the middle of the linked list.
+   - 'slow' moves one step at a time, while 'fast' moves two steps at a time.
+   - When 'fast' reaches the end of the list, 'slow' will be at the middle node (or the first node of the second half if the number of nodes is even).
+
+3. Reverse the second half of the list:
+   - It initializes a 'prev' pointer to 'NULL' and traverses the second half of the list starting from the node after the middle node ('slow->next').
+   - During traversal, it reverses the next pointers of each node to point to the previous node.
+   - Finally, it updates the next pointer of the last node in the first half to 'NULL' to mark the end of the first half.
+
+4. Merge the 2 halves:
+   - It merges the first half ('A') and the reversed second half ('B') of the linked list.
+   - It iterates through both halves simultaneously.
+   - At each step, it updates the next pointers of nodes alternately, connecting them in the desired order.
+   - It keeps track of the next nodes in each half using temporary variables ('A_next' and 'B_next') and advances the pointers accordingly.
+
+Time Complexity:
+- Finding the Middle of the List: This operation takes O(n) time, where n is the number of nodes in the linked list. This is because in the worst case, you need to traverse the entire list to find the middle.
+- Reversing the Second Half: This operation also takes O(n) time. Similar to finding the middle, you need to traverse the second half of the list once to reverse it.
+- Merging the Two Halves: This operation takes O(n) time as well. It involves traversing both halves of the list simultaneously and updating the next pointers alternately.
+
+
+Space Complexity:
+- Your code uses a constant amount of extra space regardless of the size of the input linked list. It doesn't use any additional data structures that grow with the size of the input.
+- The space complexity is therefore O(1), indicating constant space usage.
+
+Therefore:
+- Time Complexity: O(n)
+- Space Complexity: O(1)
